@@ -1,3 +1,4 @@
+
 local player = game:GetService("Players").LocalPlayer
 local camera = workspace.CurrentCamera
 local UIS = game:GetService("UserInputService")
@@ -10,18 +11,27 @@ local line2 = Drawing.new("Line") -- Right Line
 local line3 = Drawing.new("Line") -- Bottom Line 
 local line4 = Drawing.new("Line") -- Left Line
 local dot = Drawing.new("Square") -- garbage dot
-getgenv().crosshairobj = {line1 = line1,line2 = line2,line3 = line3,line4 = line4}
+getgenv().crosshairobj = {line1 = line1,line2 = line2,line3 = line3,line4 = line4,dot = dot}
 line1.Visible = true
 line2.Visible = true
 line3.Visible = true
 line4.Visible = true
+dot.Thickness = 1
+dot.Visible = true
+dot.Filled = true
+if not ss.Dot then
+    dot.Visible = false
+end
 
 game:GetService("UserInputService").InputBegan:Connect(function(i,gp)
-    if i.KeyCode == ss.ToggleKey and not gp and line1 and line2 and line3 and line4 then
+    if i.KeyCode == ss.ToggleKey and not gp and line1 and line2 and line3 and line4 and dot then
         line1.Visible = not line1.Visible
         line2.Visible = not line2.Visible
         line3.Visible = not line3.Visible
         line4.Visible = not line4.Visible
+        if ss.Dot then
+            dot.Visible = not dot.Visible
+        end
     end
 end)
 
@@ -51,6 +61,11 @@ getgenv().crosshairrs = RunService.RenderStepped:Connect(function()
     line2.Color = ss.Color
     line3.Color = ss.Color
     line4.Color = ss.Color
+    dot.Transparency = ss.Opacity
+    dot.Color = ss.Color
+    if ss.Dot and not dot.Visible then
+        
+    end
     if ss.RainbowColor then
         line1.Color = Color3.fromHSV(tick()%5/5,1,1)
         line2.Color = Color3.fromHSV(tick()%5/5,1,1)
@@ -67,4 +82,9 @@ getgenv().crosshairrs = RunService.RenderStepped:Connect(function()
     line2.To = Vector2.new(middle.X+ss.Offset+ss.Length,middle.Y)
     line3.To = Vector2.new(middle.X,middle.Y+ss.Offset+ss.Length)
     line4.To = Vector2.new(middle.X-ss.Offset-ss.Length,middle.Y)
+    
+    if ss.Dot then
+        dot.Size = Vector2.new(ss.Thickness,ss.Thickness)
+        dot.Position = Vector2.new(middle.X-(ss.Thickness/2),middle.Y-(ss.Thickness/2))
+    end
 end)
