@@ -9,10 +9,6 @@ if typeof(Drawing.new) ~= "function" then
     msg("Your exploit does not have a Drawing Library",5)
     return
 end
-if typeof(ss.Color) ~= "Color3" then
-    msg("Invalid Color",2)
-    return
-end
 
 if typeof(getgenv().crosshairobj) == "table" then
     for i,v in pairs(getgenv().crosshairobj) do
