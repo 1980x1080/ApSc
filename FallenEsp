@@ -121,11 +121,15 @@ end
 for _,v in pairs(game:GetService("Players"):GetChildren()) do
     if v.Name ~= Player.Name then
         DrawESP(v)
+        Name.Color = getgenv().boxESPColor
+        Box.Color = getgenv().nameESPColor
     end
 end
 
 game:GetService("Players").PlayerAdded:Connect(function(v)
     DrawESP(v)
+    Name.Color = getgenv().boxESPColor
+    Box.Color = getgenv().nameESPColor
 end)
 
 
