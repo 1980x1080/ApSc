@@ -1,0 +1,369 @@
+
+
+function GunSystemTransparency(Tr)
+    --<Bandage>--
+    game.ReplicatedStorage.HandModels.Bandage.Bandage.Transparency = Tr
+    --<PipeSMG>--
+    game.ReplicatedStorage.HandModels.PipeSMG.DefaultSight.RearSight.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipeSMG.DefaultSight.FrontSight.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipeSMG.Body.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipeSMG.Bolt.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipeSMG.Stock.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipeSMG.Grip.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipeSMG.Flap.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipeSMG.Mag.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipeSMG.Barrel.Transparency = Tr
+    --<PumpShotgun>--
+    game.ReplicatedStorage.HandModels.PumpShotgun.RearSight.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PumpShotgun.Barrel.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PumpShotgun.MainMetal.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PumpShotgun.Slider.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PumpShotgun.Body.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PumpShotgun.Muzzle.Transparency = Tr
+    --<USP9>--
+    game.ReplicatedStorage.HandModels.USP9.Slide.Transparency = Tr
+    game.ReplicatedStorage.HandModels.USP9.Body.Transparency = Tr
+    game.ReplicatedStorage.HandModels.USP9.Mag.Transparency = Tr
+    --<Blunderbuss>--
+    game.ReplicatedStorage.HandModels.Blunderbuss.Body.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Blunderbuss.thing.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Blunderbuss.Tube.Transparency = Tr
+    --<GaussRifle>--
+    game.ReplicatedStorage.HandModels.GaussRifle.DefaultSight.Sight2.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.DefaultSight.Sight1.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.Barrel.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.Coils.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.CoilHolders.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.Housing.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.Decals2.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.Mag.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.Decals1.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.Body.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.Housing.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.Grip.Transparency = Tr
+    game.ReplicatedStorage.HandModels.GaussRifle.StockBack.Transparency = Tr
+    --<Crossbow>--
+    game.ReplicatedStorage.HandModels.Crossbow.FrontNails.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Crossbow.SpringSteel.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Crossbow.Body.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Crossbow.Release.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Crossbow.Wheel.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Crossbow.BackMetal.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Crossbow.String.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Crossbow.Arrow.Transparency = Tr
+    --<IronHammer>--
+    game.ReplicatedStorage.HandModels.IronHammer.Part.Transparency = Tr
+    game.ReplicatedStorage.HandModels.IronHammer.default.Transparency = Tr
+    --<Crowbar>--
+    game.ReplicatedStorage.HandModels.Crowbar.model.Transparency = Tr
+    --<SteelHammer>--
+    game.ReplicatedStorage.HandModels.SteelHammer.Part.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SteelHammer.thing.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SteelHammer.default.Transparency = Tr
+    --<SCAR>--
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.ISBody.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.ISBase.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.Doing.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SCAR.Stock.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SCAR.ShoulderPad.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SCAR.Rails.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SCAR.Mag.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SCAR.Decals.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SCAR.ChargingHandle.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SCAR.Body.Transparency = Tr
+    game.ReplicatedStorage.HandModels.SCAR.Barrel.Transparency = Tr
+    --<Bow>--
+    game.ReplicatedStorage.HandModels.Bow['Meshes/Bow'].Transparency = Tr
+    game.ReplicatedStorage.HandModels.Bow.Fabric.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Bow.Arrow.Transparency = Tr
+    --<RPG>--
+    game.ReplicatedStorage.HandModels.RPG.Body.Transparency = Tr
+    game.ReplicatedStorage.HandModels.RPG.Fasteners.Transparency = Tr
+    game.ReplicatedStorage.HandModels.RPG.FireMech.Transparency = Tr
+    game.ReplicatedStorage.HandModels.RPG.Caps.Transparency = Tr
+    game.ReplicatedStorage.HandModels.RPG.Trigger.Transparency = Tr
+    game.ReplicatedStorage.HandModels.RPG.Safety.Transparency = Tr
+    game.ReplicatedStorage.HandModels.RPG.Sight.Transparency = Tr
+    --<Hammer>--
+    game.ReplicatedStorage.HandModels.Hammer.Top.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Hammer.Part.Transparency = Tr
+    --<BloxyCola>--
+    game.ReplicatedStorage.HandModels.BloxyCola['Bloxy Cola HD'].Transparency = Tr
+    --<HealingBandage>--
+    game.ReplicatedStorage.HandModels.HealingBandage.Bandage.Transparency = Tr
+    --<MiningDrill>--
+    game.ReplicatedStorage.HandModels.MiningDrill.Bearings.Transparency = Tr
+    game.ReplicatedStorage.HandModels.MiningDrill.Body.Transparency = Tr
+    game.ReplicatedStorage.HandModels.MiningDrill.Inlets.Transparency = Tr
+    game.ReplicatedStorage.HandModels.MiningDrill.Tubes.Transparency = Tr
+    game.ReplicatedStorage.HandModels.MiningDrill.DrillBit.Transparency = Tr
+    game.ReplicatedStorage.HandModels.MiningDrill.VisualHandle.Transparency = Tr
+    --<Dynamite>--
+    game.ReplicatedStorage.HandModels.Dynamite.Fuse.Transparency = Tr
+    game.ReplicatedStorage.HandModels.Dynamite.Body.Transparency = Tr
+    --<StoneHammer>--
+    game.ReplicatedStorage.HandModels.StoneHammer.Part.Transparency = Tr
+    game.ReplicatedStorage.HandModels.StoneHammer.Top.Transparency = Tr
+    --<M4A1>--
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.CarryHandle.Transparency = Tr
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.RearSight.Transparency = Tr
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.FrontSight.Transparency = Tr
+    game.ReplicatedStorage.HandModels.M4A1.mbrk.Transparency = Tr
+    game.ReplicatedStorage.HandModels.M4A1.Mag.Transparency = Tr
+    game.ReplicatedStorage.HandModels.M4A1.Grip.Transparency = Tr
+    game.ReplicatedStorage.HandModels.M4A1.Metal.Transparency = Tr
+    game.ReplicatedStorage.HandModels.M4A1.ChargeHandle.Transparency = Tr
+    game.ReplicatedStorage.HandModels.M4A1.Bolt.Transparency = Tr
+    game.ReplicatedStorage.HandModels.M4A1.Body.Transparency = Tr
+    --<PipePistol>--
+    game.ReplicatedStorage.HandModels.PipePistol.DefaultSight.Main.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipePistol.Body.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipePistol.Bolt.Transparency = Tr
+    game.ReplicatedStorage.HandModels.PipePistol.Mag.Transparency = Tr
+end
+
+function GunSystemColor(Clr3)
+    --<Bandage>--
+    game.ReplicatedStorage.HandModels.Bandage.Bandage.Color = Clr3
+    --<PipeSMG>--
+    game.ReplicatedStorage.HandModels.PipeSMG.DefaultSight.RearSight.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.DefaultSight.FrontSight.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Bolt.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Stock.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Grip.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Flap.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Mag.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Barrel.Color = Clr3
+    --<PumpShotgun>--
+    game.ReplicatedStorage.HandModels.PumpShotgun.RearSight.Color = Clr3
+    game.ReplicatedStorage.HandModels.PumpShotgun.Barrel.Color = Clr3
+    game.ReplicatedStorage.HandModels.PumpShotgun.MainMetal.Color = Clr3
+    game.ReplicatedStorage.HandModels.PumpShotgun.Slider.Color = Clr3
+    game.ReplicatedStorage.HandModels.PumpShotgun.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.PumpShotgun.Muzzle.Color = Clr3
+    --<USP9>--
+    game.ReplicatedStorage.HandModels.USP9.Slide.Color = Clr3
+    game.ReplicatedStorage.HandModels.USP9.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.USP9.Mag.Color = Clr3
+    --<Blunderbuss>--
+    game.ReplicatedStorage.HandModels.Blunderbuss.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.Blunderbuss.thing.Color = Clr3
+    game.ReplicatedStorage.HandModels.Blunderbuss.Tube.Color = Clr3
+    --<GaussRifle>--
+    game.ReplicatedStorage.HandModels.GaussRifle.DefaultSight.Sight2.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.DefaultSight.Sight1.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Barrel.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Coils.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.CoilHolders.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Housing.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Decals2.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Mag.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Decals1.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Housing.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Grip.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.StockBack.Color = Clr3
+    --<Crossbow>--
+    game.ReplicatedStorage.HandModels.Crossbow.FrontNails.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.SpringSteel.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.Release.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.Wheel.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.BackMetal.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.String.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.Arrow.Color = Clr3
+    --<IronHammer>--
+    game.ReplicatedStorage.HandModels.IronHammer.Part.Color = Clr3
+    game.ReplicatedStorage.HandModels.IronHammer.default.Color = Clr3
+    --<Crowbar>--
+    game.ReplicatedStorage.HandModels.Crowbar.model.Color = Clr3
+    --<SteelHammer>--
+    game.ReplicatedStorage.HandModels.SteelHammer.Part.Color = Clr3
+    game.ReplicatedStorage.HandModels.SteelHammer.thing.Color = Clr3
+    game.ReplicatedStorage.HandModels.SteelHammer.default.Color = Clr3
+    --<SCAR>--
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.ISBody.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.ISBase.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.Doing.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Stock.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.ShoulderPad.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Rails.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Mag.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Decals.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.ChargingHandle.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Barrel.Color = Clr3
+    --<Bow>--
+    game.ReplicatedStorage.HandModels.Bow['Meshes/Bow'].Color = Clr3
+    game.ReplicatedStorage.HandModels.Bow.Fabric.Color = Clr3
+    game.ReplicatedStorage.HandModels.Bow.Arrow.Color = Clr3
+    --<RPG>--
+    game.ReplicatedStorage.HandModels.RPG.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.Fasteners.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.FireMech.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.Caps.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.Trigger.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.Safety.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.Sight.Color = Clr3
+    --<Hammer>--
+    game.ReplicatedStorage.HandModels.Hammer.Top.Color = Clr3
+    game.ReplicatedStorage.HandModels.Hammer.Part.Color = Clr3
+    --<BloxyCola>--
+    game.ReplicatedStorage.HandModels.BloxyCola['Bloxy Cola HD'].Color = Clr3
+    --<HealingBandage>--
+    game.ReplicatedStorage.HandModels.HealingBandage.Bandage.Color = Clr3
+    --<MiningDrill>--
+    game.ReplicatedStorage.HandModels.MiningDrill.Bearings.Color = Clr3
+    game.ReplicatedStorage.HandModels.MiningDrill.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.MiningDrill.Inlets.Color = Clr3
+    game.ReplicatedStorage.HandModels.MiningDrill.Tubes.Color = Clr3
+    game.ReplicatedStorage.HandModels.MiningDrill.DrillBit.Color = Clr3
+    game.ReplicatedStorage.HandModels.MiningDrill.VisualHandle.Color = Clr3
+    --<Dynamite>--
+    game.ReplicatedStorage.HandModels.Dynamite.Fuse.Color = Clr3
+    game.ReplicatedStorage.HandModels.Dynamite.Body.Color = Clr3
+    --<StoneHammer>--
+    game.ReplicatedStorage.HandModels.StoneHammer.Part.Color = Clr3
+    game.ReplicatedStorage.HandModels.StoneHammer.Top.Color = Clr3
+    --<M4A1>--
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.CarryHandle.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.RearSight.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.FrontSight.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.mbrk.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.Mag.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.Grip.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.Metal.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.ChargeHandle.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.Bolt.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.Body.Color = Clr3
+    --<PipePistol>--
+    game.ReplicatedStorage.HandModels.PipePistol.DefaultSight.Main.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipePistol.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipePistol.Bolt.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipePistol.Mag.Color = Clr3
+end
+
+
+
+function GunSystemMaterials(Mater)
+    --<Bandage>--
+    game.ReplicatedStorage.HandModels.Bandage.Bandage.Material = Mater
+    --<PipeSMG>--
+    game.ReplicatedStorage.HandModels.PipeSMG.DefaultSight.RearSight.Material = Mater
+    game.ReplicatedStorage.HandModels.PipeSMG.DefaultSight.FrontSight.Material = Mater
+    game.ReplicatedStorage.HandModels.PipeSMG.Body.Material = Mater
+    game.ReplicatedStorage.HandModels.PipeSMG.Bolt.Material = Mater
+    game.ReplicatedStorage.HandModels.PipeSMG.Stock.Material = Mater
+    game.ReplicatedStorage.HandModels.PipeSMG.Grip.Material = Mater
+    game.ReplicatedStorage.HandModels.PipeSMG.Flap.Material = Mater
+    game.ReplicatedStorage.HandModels.PipeSMG.Mag.Material = Mater
+    game.ReplicatedStorage.HandModels.PipeSMG.Barrel.Material = Mater
+    --<PumpShotgun>--
+    game.ReplicatedStorage.HandModels.PumpShotgun.RearSight.Material = Mater
+    game.ReplicatedStorage.HandModels.PumpShotgun.Barrel.Material = Mater
+    game.ReplicatedStorage.HandModels.PumpShotgun.MainMetal.Material = Mater
+    game.ReplicatedStorage.HandModels.PumpShotgun.Slider.Material = Mater
+    game.ReplicatedStorage.HandModels.PumpShotgun.Body.Material = Mater
+    game.ReplicatedStorage.HandModels.PumpShotgun.Muzzle.Material = Mater
+    --<USP9>--
+    game.ReplicatedStorage.HandModels.USP9.Slide.Material = Mater
+    game.ReplicatedStorage.HandModels.USP9.Body.Material = Mater
+    game.ReplicatedStorage.HandModels.USP9.Mag.Material = Mater
+    --<Blunderbuss>--
+    game.ReplicatedStorage.HandModels.Blunderbuss.Body.Material = Mater
+    game.ReplicatedStorage.HandModels.Blunderbuss.thing.Material = Mater
+    game.ReplicatedStorage.HandModels.Blunderbuss.Tube.Material = Mater
+    --<GaussRifle>--
+    game.ReplicatedStorage.HandModels.GaussRifle.DefaultSight.Sight2.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.DefaultSight.Sight1.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.Barrel.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.Coils.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.CoilHolders.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.Housing.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.Decals2.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.Mag.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.Decals1.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.Body.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.Housing.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.Grip.Material = Mater
+    game.ReplicatedStorage.HandModels.GaussRifle.StockBack.Material = Mater
+    --<Crossbow>--
+    game.ReplicatedStorage.HandModels.Crossbow.FrontNails.Material = Mater
+    game.ReplicatedStorage.HandModels.Crossbow.SpringSteel.Material = Mater
+    game.ReplicatedStorage.HandModels.Crossbow.Body.Material = Mater
+    game.ReplicatedStorage.HandModels.Crossbow.Release.Material = Mater
+    game.ReplicatedStorage.HandModels.Crossbow.Wheel.Material = Mater
+    game.ReplicatedStorage.HandModels.Crossbow.BackMetal.Material = Mater
+    game.ReplicatedStorage.HandModels.Crossbow.String.Material = Mater
+    game.ReplicatedStorage.HandModels.Crossbow.Arrow.Material = Mater
+    --<IronHammer>--
+    game.ReplicatedStorage.HandModels.IronHammer.Part.Material = Mater
+    game.ReplicatedStorage.HandModels.IronHammer.default.Material = Mater
+    --<Crowbar>--
+    game.ReplicatedStorage.HandModels.Crowbar.model.Material = Mater
+    --<SteelHammer>--
+    game.ReplicatedStorage.HandModels.SteelHammer.Part.Material = Mater
+    game.ReplicatedStorage.HandModels.SteelHammer.thing.Material = Mater
+    game.ReplicatedStorage.HandModels.SteelHammer.default.Material = Mater
+    --<SCAR>--
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.ISBody.Material = Mater
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.ISBase.Material = Mater
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.Doing.Material = Mater
+    game.ReplicatedStorage.HandModels.SCAR.Stock.Material = Mater
+    game.ReplicatedStorage.HandModels.SCAR.ShoulderPad.Material = Mater
+    game.ReplicatedStorage.HandModels.SCAR.Rails.Material = Mater
+    game.ReplicatedStorage.HandModels.SCAR.Mag.Material = Mater
+    game.ReplicatedStorage.HandModels.SCAR.Decals.Material = Mater
+    game.ReplicatedStorage.HandModels.SCAR.ChargingHandle.Material = Mater
+    game.ReplicatedStorage.HandModels.SCAR.Body.Material = Mater
+    game.ReplicatedStorage.HandModels.SCAR.Barrel.Material = Mater
+    --<Bow>--
+    game.ReplicatedStorage.HandModels.Bow['Meshes/Bow'].Material = Mater
+    game.ReplicatedStorage.HandModels.Bow.Fabric.Material = Mater
+    game.ReplicatedStorage.HandModels.Bow.Arrow.Material = Mater
+    --<RPG>--
+    game.ReplicatedStorage.HandModels.RPG.Body.Material = Mater
+    game.ReplicatedStorage.HandModels.RPG.Fasteners.Material = Mater
+    game.ReplicatedStorage.HandModels.RPG.FireMech.Material = Mater
+    game.ReplicatedStorage.HandModels.RPG.Caps.Material = Mater
+    game.ReplicatedStorage.HandModels.RPG.Trigger.Material = Mater
+    game.ReplicatedStorage.HandModels.RPG.Safety.Material = Mater
+    game.ReplicatedStorage.HandModels.RPG.Sight.Material = Mater
+    --<Hammer>--
+    game.ReplicatedStorage.HandModels.Hammer.Top.Material = Mater
+    game.ReplicatedStorage.HandModels.Hammer.Part.Material = Mater
+    --<BloxyCola>--
+    game.ReplicatedStorage.HandModels.BloxyCola['Bloxy Cola HD'].Material = Mater
+    --<HealingBandage>--
+    game.ReplicatedStorage.HandModels.HealingBandage.Bandage.Material = Mater
+    --<MiningDrill>--
+    game.ReplicatedStorage.HandModels.MiningDrill.Bearings.Material = Mater
+    game.ReplicatedStorage.HandModels.MiningDrill.Body.Material = Mater
+    game.ReplicatedStorage.HandModels.MiningDrill.Inlets.Material = Mater
+    game.ReplicatedStorage.HandModels.MiningDrill.Tubes.Material = Mater
+    game.ReplicatedStorage.HandModels.MiningDrill.DrillBit.Material = Mater
+    game.ReplicatedStorage.HandModels.MiningDrill.VisualHandle.Material = Mater
+    --<Dynamite>--
+    game.ReplicatedStorage.HandModels.Dynamite.Fuse.Material = Mater
+    game.ReplicatedStorage.HandModels.Dynamite.Body.Material = Mater
+    --<StoneHammer>--
+    game.ReplicatedStorage.HandModels.StoneHammer.Part.Material = Mater
+    game.ReplicatedStorage.HandModels.StoneHammer.Top.Material = Mater
+    --<M4A1>--
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.CarryHandle.Material = Mater
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.RearSight.Material = Mater
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.FrontSight.Material = Mater
+    game.ReplicatedStorage.HandModels.M4A1.mbrk.Material = Mater
+    game.ReplicatedStorage.HandModels.M4A1.Mag.Material = Mater
+    game.ReplicatedStorage.HandModels.M4A1.Grip.Material = Mater
+    game.ReplicatedStorage.HandModels.M4A1.Metal.Material = Mater
+    game.ReplicatedStorage.HandModels.M4A1.ChargeHandle.Material = Mater
+    game.ReplicatedStorage.HandModels.M4A1.Bolt.Material = Mater
+    game.ReplicatedStorage.HandModels.M4A1.Body.Material = Mater
+    --<PipePistol>--
+    game.ReplicatedStorage.HandModels.PipePistol.DefaultSight.Main.Material = Mater
+    game.ReplicatedStorage.HandModels.PipePistol.Body.Material = Mater
+    game.ReplicatedStorage.HandModels.PipePistol.Bolt.Material = Mater
+    game.ReplicatedStorage.HandModels.PipePistol.Mag.Material = Mater
+end
