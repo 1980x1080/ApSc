@@ -1,0 +1,119 @@
+--<Bandage>--
+    game.ReplicatedStorage.HandModels.Bandage.Bandage.Color = Clr3
+    --<PipeSMG>--
+    game.ReplicatedStorage.HandModels.PipeSMG.DefaultSight.RearSight.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.DefaultSight.FrontSight.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Bolt.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Stock.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Grip.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Flap.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Mag.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipeSMG.Barrel.Color = Clr3
+    --<PumpShotgun>--
+    game.ReplicatedStorage.HandModels.PumpShotgun.RearSight.Color = Clr3
+    game.ReplicatedStorage.HandModels.PumpShotgun.Barrel.Color = Clr3
+    game.ReplicatedStorage.HandModels.PumpShotgun.MainMetal.Color = Clr3
+    game.ReplicatedStorage.HandModels.PumpShotgun.Slider.Color = Clr3
+    game.ReplicatedStorage.HandModels.PumpShotgun.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.PumpShotgun.Muzzle.Color = Clr3
+    --<USP9>--
+    game.ReplicatedStorage.HandModels.USP9.Slide.Color = Clr3
+    game.ReplicatedStorage.HandModels.USP9.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.USP9.Mag.Color = Clr3
+    --<Blunderbuss>--
+    game.ReplicatedStorage.HandModels.Blunderbuss.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.Blunderbuss.thing.Color = Clr3
+    game.ReplicatedStorage.HandModels.Blunderbuss.Tube.Color = Clr3
+    --<GaussRifle>--
+    game.ReplicatedStorage.HandModels.GaussRifle.DefaultSight.Sight2.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.DefaultSight.Sight1.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Barrel.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Coils.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.CoilHolders.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Housing.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Decals2.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Mag.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Decals1.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Housing.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.Grip.Color = Clr3
+    game.ReplicatedStorage.HandModels.GaussRifle.StockBack.Color = Clr3
+    --<Crossbow>--
+    game.ReplicatedStorage.HandModels.Crossbow.FrontNails.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.SpringSteel.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.Release.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.Wheel.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.BackMetal.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.String.Color = Clr3
+    game.ReplicatedStorage.HandModels.Crossbow.Arrow.Color = Clr3
+    --<IronHammer>--
+    game.ReplicatedStorage.HandModels.IronHammer.Part.Color = Clr3
+    game.ReplicatedStorage.HandModels.IronHammer.default.Color = Clr3
+    --<Crowbar>--
+    game.ReplicatedStorage.HandModels.Crowbar.model.Color = Clr3
+    --<SteelHammer>--
+    game.ReplicatedStorage.HandModels.SteelHammer.Part.Color = Clr3
+    game.ReplicatedStorage.HandModels.SteelHammer.thing.Color = Clr3
+    game.ReplicatedStorage.HandModels.SteelHammer.default.Color = Clr3
+    --<SCAR>--
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.ISBody.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.ISBase.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.DefaultSight.Doing.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Stock.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.ShoulderPad.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Rails.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Mag.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Decals.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.ChargingHandle.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.SCAR.Barrel.Color = Clr3
+    --<Bow>--
+    game.ReplicatedStorage.HandModels.Bow['Meshes/Bow'].Color = Clr3
+    game.ReplicatedStorage.HandModels.Bow.Fabric.Color = Clr3
+    game.ReplicatedStorage.HandModels.Bow.Arrow.Color = Clr3
+    --<RPG>--
+    game.ReplicatedStorage.HandModels.RPG.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.Fasteners.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.FireMech.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.Caps.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.Trigger.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.Safety.Color = Clr3
+    game.ReplicatedStorage.HandModels.RPG.Sight.Color = Clr3
+    --<Hammer>--
+    game.ReplicatedStorage.HandModels.Hammer.Top.Color = Clr3
+    game.ReplicatedStorage.HandModels.Hammer.Part.Color = Clr3
+    --<BloxyCola>--
+    game.ReplicatedStorage.HandModels.BloxyCola['Bloxy Cola HD'].Color = Clr3
+    --<HealingBandage>--
+    game.ReplicatedStorage.HandModels.HealingBandage.Bandage.Color = Clr3
+    --<MiningDrill>--
+    game.ReplicatedStorage.HandModels.MiningDrill.Bearings.Color = Clr3
+    game.ReplicatedStorage.HandModels.MiningDrill.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.MiningDrill.Inlets.Color = Clr3
+    game.ReplicatedStorage.HandModels.MiningDrill.Tubes.Color = Clr3
+    game.ReplicatedStorage.HandModels.MiningDrill.DrillBit.Color = Clr3
+    game.ReplicatedStorage.HandModels.MiningDrill.VisualHandle.Color = Clr3
+    --<Dynamite>--
+    game.ReplicatedStorage.HandModels.Dynamite.Fuse.Color = Clr3
+    game.ReplicatedStorage.HandModels.Dynamite.Body.Color = Clr3
+    --<StoneHammer>--
+    game.ReplicatedStorage.HandModels.StoneHammer.Part.Color = Clr3
+    game.ReplicatedStorage.HandModels.StoneHammer.Top.Color = Clr3
+    --<M4A1>--
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.CarryHandle.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.RearSight.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.DefaultSight.FrontSight.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.mbrk.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.Mag.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.Grip.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.Metal.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.ChargeHandle.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.Bolt.Color = Clr3
+    game.ReplicatedStorage.HandModels.M4A1.Body.Color = Clr3
+    --<PipePistol>--
+    game.ReplicatedStorage.HandModels.PipePistol.DefaultSight.Main.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipePistol.Body.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipePistol.Bolt.Color = Clr3
+    game.ReplicatedStorage.HandModels.PipePistol.Mag.Color = Clr3
