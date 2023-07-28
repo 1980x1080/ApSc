@@ -2481,8 +2481,8 @@ function Library:CreateWindow(...)
         BorderColor3 = Library.OutlineColor;
         BackgroundTransparency = 1;
         Image = Config.IconImage;
-        Position = UDim2.new(0, 100, 0, 42);
-        Size = UDim2.new(1, -106, 1, -48);
+        Position = UDim2.new(0, -40, 0, -4);
+        Size = UDim2.new(0, 33, 0, 33);
         ZIndex = 1;
         Parent = WindowLabel;
     });
