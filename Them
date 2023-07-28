@@ -31,7 +31,7 @@ local ThemeManager = {} do
 
 	function ThemeManager:ThemeUpdate()
 		-- This allows us to force apply themes without loading the themes tab :)
-		local options = { "FontColor", "MainColor", "AccentColor", "BackgroundColor", "OutlineColor" }
+		local options = { "FontColor", "MainColor", "AccentColor", "BackgroundColor", "OutlineColor","CategoreColor" }
 		for i, field in next, options do
 			if Options and Options[field] then
 				self.Library[field] = Options[field].Value
@@ -70,7 +70,7 @@ local ThemeManager = {} do
 	end
 
 	function ThemeManager:CreateThemeManager(groupbox)
-        groupbox:AddDivider()
+		groupbox:AddLabel('Categore color'):AddColorPicker('CategoreColor', { Default = Color3.fromRGB(126, 126, 126) });
 		groupbox:AddLabel('Background color'):AddColorPicker('BackgroundColor', { Default = self.Library.BackgroundColor });
 		groupbox:AddLabel('Main color')	:AddColorPicker('MainColor', { Default = self.Library.MainColor });
 		groupbox:AddLabel('Accent color'):AddColorPicker('AccentColor', { Default = self.Library.AccentColor });
@@ -130,6 +130,7 @@ local ThemeManager = {} do
 		end
 
 		Options.BackgroundColor:OnChanged(UpdateTheme)
+		Options.CategoreColor:OnChanged(UpdateTheme)
 		Options.MainColor:OnChanged(UpdateTheme)
 		Options.AccentColor:OnChanged(UpdateTheme)
 		Options.OutlineColor:OnChanged(UpdateTheme)
@@ -158,7 +159,7 @@ local ThemeManager = {} do
 		end
 
 		local theme = {}
-		local fields = { "FontColor", "MainColor", "AccentColor", "BackgroundColor", "OutlineColor" }
+		local fields = { "FontColor", "MainColor", "AccentColor", "BackgroundColor", "OutlineColor","CategoreColor" }
 
 		for _, field in next, fields do
 			theme[field] = Options[field].Value:ToHex()
