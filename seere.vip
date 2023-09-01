@@ -1,3 +1,6 @@
+local CFGFolder = "ZXCNIGGER"
+local CheatName = 'Seere<font color="#a0a1e9">.vip</font> - Mega OMG Fix😳'
+local ColorLines = Color3.fromRGB(160, 161, 233)--208, 123, 255
 --UI
 local inputService = game:GetService("UserInputService")
 local runService = game:GetService("RunService")
