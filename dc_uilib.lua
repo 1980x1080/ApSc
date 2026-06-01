@@ -2709,7 +2709,7 @@ function Library:CreateWindow(options)
                     if canChangeMode == nil then canChangeMode = true end
                     local showInList = options.ShowInList
                     if showInList == nil then showInList = true end
-                    local listName = options.ListName
+                    local listName = options.ListName or options.Title or options.Tittle
                     local callback = options.Callback or function() end
 
                     local function onKeybindChanged(...)
@@ -2966,6 +2966,13 @@ function Library:CreateWindow(options)
                         for _, mb in ipairs(modeBtns) do
                             mb.TextColor3 = (mb.Name == kbObj.Mode) and Library.Accent or Color3.fromRGB(200, 200, 200)
                         end
+                        if kbObj.Mode == "Always" then
+                            kbObj.State = true
+                        else
+                            kbObj.State = false
+                        end
+                        onKeybindChanged(kbObj.State)
+                        FireCallbacks(kbObj.State)
                         Library:UpdateKeybindList()
                     end
                     kbObj.Set = kbObj.SetValue
@@ -2973,6 +2980,11 @@ function Library:CreateWindow(options)
                     Library.Flags[flag] = kbObj
                     if showInList and listName then
                         Library:RegisterKeybindList(listName, kbObj)
+                    end
+                    if kbObj.Mode == "Always" then
+                        kbObj.State = true
+                        onKeybindChanged(kbObj.State)
+                        FireCallbacks(kbObj.State)
                     end
                     return kbObj
                 end
@@ -3042,7 +3054,7 @@ function Library:CreateWindow(options)
                     function LabelObj:AddKeybind(kbOptions)
                         kbOptions = kbOptions or {}
                         if not kbOptions.ListName then
-                            kbOptions.ListName = text
+                            kbOptions.ListName = kbOptions.Title or kbOptions.Tittle or text
                         end
                         local kb = CreateKeybindAddon(LabelContainer, ScrollFrame, kbOptions, self.AddonOffset)
                         self.AddonOffset = self.AddonOffset + 25 + 4
@@ -3241,7 +3253,7 @@ function Library:CreateWindow(options)
                     function ToggleObj:AddKeybind(kbOptions)
                         kbOptions = kbOptions or {}
                         if not kbOptions.ListName then
-                            kbOptions.ListName = text
+                            kbOptions.ListName = kbOptions.Title or kbOptions.Tittle or text
                         end
                         local kb = CreateKeybindAddon(ToggleContainer, ScrollFrame, kbOptions, self.AddonOffset)
                         self.AddonOffset = self.AddonOffset + 25 + 4
