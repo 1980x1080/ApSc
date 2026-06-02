@@ -7,6 +7,7 @@ local UserInputService = clone_ref(game:GetService("UserInputService"))
 local TweenService = clone_ref(game:GetService("TweenService"))
 local GuiService = clone_ref(game:GetService("GuiService"))
 local HttpService = clone_ref(game:GetService("HttpService"))
+local TextService = clone_ref(game:GetService("TextService"))
 
 Library.Accent = Color3.fromRGB(224, 94, 124)
 Library.Flags = {}
@@ -17,6 +18,10 @@ Library.KeybindListFrame = nil
 Library.KeybindListContainer = nil
 Library.KeybindListEntries = {}
 Library.KeybindListVisible = true
+Library.WatermarkFrame = nil
+Library.WatermarkLabel = nil
+Library.WatermarkVisible = true
+Library.WatermarkText = "<b>DeadCell</b>"
 Library.ConfigFolder = "DeadcellConfigs"
 Library.DefaultAccent = Library.Accent
 Library.AccentRegistry = {}
@@ -97,6 +102,11 @@ end
 function Library:GetDarkerColor(color, factor)
     local h, s, v = color:ToHSV()
     return Color3.fromHSV(h, s, math.clamp(v - (factor or 0.2), 0, 1))
+end
+
+function Library:StripRichText(text)
+    text = tostring(text or "")
+    return (text:gsub("<[^>]->", ""))
 end
 
 function Library:RegisterAccentObject(object, accentType)
@@ -458,6 +468,10 @@ function Library:Notify(options)
     local text = hasText and tostring(options.Text) or ""
     local accent = options.Color or Library.Accent
     local spacing = 8
+    local richText = options.RichText
+    if richText == nil then
+        richText = true
+    end
     
     local ScreenGui = Library:GetScreenGui()
     if not ScreenGui then return end
@@ -496,7 +510,8 @@ function Library:Notify(options)
 
     local bodyText = hasText and ("  " .. text) or ""
     local displayText = tostring(title) .. bodyText
-    local textSize = game:GetService("TextService"):GetTextSize(displayText, 11, Enum.Font.Code, Vector2.new(1000, 1000))
+    local measureText = richText and Library:StripRichText(displayText) or displayText
+    local textSize = TextService:GetTextSize(measureText, 11, Enum.Font.Code, Vector2.new(1000, 1000))
     local notifWidth = math.clamp(textSize.X + 30, 150, 360)
     local notifHeight = 24
     local isTextType = tostring(notifyType):lower() == "text"
@@ -563,6 +578,7 @@ function Library:Notify(options)
         TextXAlignment = Enum.TextXAlignment.Left,
         TextYAlignment = Enum.TextYAlignment.Center,
         TextTruncate = Enum.TextTruncate.AtEnd,
+        RichText = richText,
         ZIndex = 304
     })
     
@@ -1249,6 +1265,126 @@ function Library:SetKeybindListVisible(state)
     end
 end
 
+function Library:CreateWatermark()
+    if Library.WatermarkFrame then return Library.WatermarkFrame end
+
+    local ScreenGui = Library:GetScreenGui()
+    if not ScreenGui then return nil end
+
+    local cleanText = Library:StripRichText(Library.WatermarkText)
+    local textBounds = TextService:GetTextSize(cleanText, 12, Enum.Font.Code, Vector2.new(1000, 1000))
+    local width = math.max(140, textBounds.X + 26)
+
+    local watermark = Library:Create("Frame", {
+        Name = "Watermark",
+        Parent = ScreenGui,
+        BackgroundColor3 = Color3.fromRGB(12, 12, 12),
+        AnchorPoint = Vector2.new(0.5, 0),
+        Position = UDim2.new(0.5, 0, 0, 12),
+        Size = UDim2.new(0, width, 0, 24),
+        BorderSizePixel = 0,
+        Visible = Library.WatermarkVisible,
+        ZIndex = 60
+    })
+
+    local border1 = Library:Create("Frame", {
+        Parent = watermark,
+        BackgroundColor3 = Color3.fromRGB(55, 53, 62),
+        Position = UDim2.new(0, 1, 0, 1),
+        Size = UDim2.new(1, -2, 1, -2),
+        BorderSizePixel = 0,
+        ZIndex = 61
+    })
+
+    local border2 = Library:Create("Frame", {
+        Parent = border1,
+        BackgroundColor3 = Color3.fromRGB(35, 33, 40),
+        Position = UDim2.new(0, 1, 0, 1),
+        Size = UDim2.new(1, -2, 1, -2),
+        BorderSizePixel = 0,
+        ZIndex = 62
+    })
+
+    local mainBg = Library:Create("Frame", {
+        Parent = border2,
+        BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+        Position = UDim2.new(0, 1, 0, 1),
+        Size = UDim2.new(1, -2, 1, -2),
+        BorderSizePixel = 0,
+        ZIndex = 63
+    })
+
+    Library:Create("UIGradient", {
+        Name = "MainBgGradient",
+        Parent = mainBg,
+        Rotation = 90,
+        Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.fromRGB(15, 14, 19)),
+            ColorSequenceKeypoint.new(1, Color3.fromRGB(26, 24, 30))
+        })
+    })
+
+    Library:Create("Frame", {
+        Name = "AccentLine",
+        Parent = mainBg,
+        BackgroundColor3 = Library.Accent,
+        Position = UDim2.new(0, 0, 0, 0),
+        Size = UDim2.new(1, 0, 0, 1),
+        BorderSizePixel = 0,
+        ZIndex = 64
+    })
+
+    local label = Library:Create("TextLabel", {
+        Name = "Text",
+        Parent = mainBg,
+        BackgroundTransparency = 1,
+        Position = UDim2.new(0, 8, 0, 1),
+        Size = UDim2.new(1, -16, 1, -2),
+        Font = Enum.Font.Code,
+        Text = Library.WatermarkText,
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        TextSize = 12,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextYAlignment = Enum.TextYAlignment.Center,
+        RichText = true,
+        ZIndex = 65
+    })
+
+    Library:Create("UIStroke", {
+        Name = "TextStroke",
+        Parent = label,
+        Color = Color3.fromRGB(0, 0, 0),
+        Thickness = 1,
+        Transparency = 0.6,
+        ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+    })
+
+    Library.WatermarkFrame = watermark
+    Library.WatermarkLabel = label
+    Library:Draggify(watermark)
+    Library:SetWatermarkText(Library.WatermarkText)
+    Library:SetWatermarkVisible(Library.WatermarkVisible)
+
+    return watermark
+end
+
+function Library:SetWatermarkVisible(state)
+    Library.WatermarkVisible = state
+    if Library.WatermarkFrame then
+        Library.WatermarkFrame.Visible = state
+    end
+end
+
+function Library:SetWatermarkText(text)
+    Library.WatermarkText = tostring(text or "")
+    if Library.WatermarkLabel and Library.WatermarkFrame then
+        Library.WatermarkLabel.Text = Library.WatermarkText
+        local cleanText = Library:StripRichText(Library.WatermarkText)
+        local textBounds = TextService:GetTextSize(cleanText, 12, Enum.Font.Code, Vector2.new(1000, 1000))
+        Library.WatermarkFrame.Size = UDim2.new(0, math.max(140, textBounds.X + 26), 0, 24)
+    end
+end
+
 function Library:ChangeAccent(newColor)
     if Library.Flags and Library.Flags["CustomAccentToggle"] and not Library.Flags["CustomAccentToggle"].Value then
         newColor = Library.DefaultAccent or Library.Accent
@@ -1280,6 +1416,7 @@ function Library:CreateWindow(options)
         Parent = ScreenGui
     })
     Library.ModalElement = ModalElement
+    Library:CreateWatermark()
 
     Library:_StartCursor()
 
@@ -1880,6 +2017,7 @@ function Library:CreateWindow(options)
                     TextSize = 13,
                     ZIndex = 16,
                     RichText = true,
+                    TextXAlignment = Enum.TextXAlignment.Left,
                     TextYAlignment = Enum.TextYAlignment.Center 
                 })
 
@@ -2225,6 +2363,7 @@ function Library:CreateWindow(options)
                     local defaultAlpha = options.DefaultAlpha or 1
                     local flag = options.Flag or ("Colorpicker_" .. tostring(math.random(100000)))
                     local callback = options.Callback or function() end
+                    local pickerTitle = tostring(options.Title or options.Tittle or "Color Picker")
 
                     local cpObj = {
                         Color = defaultColor,
@@ -2303,7 +2442,7 @@ function Library:CreateWindow(options)
                         Name = "PickerFrame",
                         Parent = ScreenGui,
                         BackgroundColor3 = Color3.fromRGB(40, 40, 50),
-                        Size = UDim2.new(0, 185, 0, 170),
+                        Size = UDim2.new(0, 185, 0, 188),
                         Visible = false,
                         ZIndex = 150
                     })
@@ -2315,9 +2454,24 @@ function Library:CreateWindow(options)
                         ApplyStrokeMode = Enum.ApplyStrokeMode.Border
                     })
 
+                    Library:Create("TextLabel", {
+                        Name = "Title",
+                        Parent = PickerFrame,
+                        BackgroundTransparency = 1,
+                        Position = UDim2.new(0, 10, 0, 6),
+                        Size = UDim2.new(1, -20, 0, 14),
+                        Font = Enum.Font.Code,
+                        Text = pickerTitle,
+                        TextColor3 = Color3.fromRGB(255, 255, 255),
+                        TextSize = 11,
+                        TextXAlignment = Enum.TextXAlignment.Left,
+                        TextYAlignment = Enum.TextYAlignment.Center,
+                        ZIndex = 151
+                    })
+
                     local SVMap = Library:Create("TextButton", {
                         Name = "SVMap", Parent = PickerFrame,
-                        Position = UDim2.new(0, 10, 0, 10), Size = UDim2.new(0, 145, 0, 100),
+                        Position = UDim2.new(0, 10, 0, 28), Size = UDim2.new(0, 145, 0, 100),
                         BackgroundColor3 = Color3.fromHSV(h, 1, 1),
                         AutoButtonColor = false, Text = "", ZIndex = 151
                     })
@@ -2340,7 +2494,7 @@ function Library:CreateWindow(options)
 
                     local HueSlider = Library:Create("TextButton", {
                         Name = "HueSlider", Parent = PickerFrame,
-                        Position = UDim2.new(0, 165, 0, 10), Size = UDim2.new(0, 10, 0, 100),
+                        Position = UDim2.new(0, 165, 0, 28), Size = UDim2.new(0, 10, 0, 100),
                         BackgroundColor3 = Color3.fromRGB(255, 255, 255), AutoButtonColor = false, Text = "", ZIndex = 151
                     })
                     Library:Create("UIGradient", {
@@ -2362,7 +2516,7 @@ function Library:CreateWindow(options)
 
                     local AlphaSlider = Library:Create("TextButton", {
                         Name = "AlphaSlider", Parent = PickerFrame,
-                        Position = UDim2.new(0, 10, 0, 120), Size = UDim2.new(0, 165, 0, 15),
+                        Position = UDim2.new(0, 10, 0, 138), Size = UDim2.new(0, 165, 0, 15),
                         BackgroundColor3 = Color3.fromRGB(150, 150, 150), AutoButtonColor = false, Text = "", ZIndex = 151, ClipsDescendants = false
                     })
 
@@ -2394,7 +2548,7 @@ function Library:CreateWindow(options)
 
                     local ModeBtnBg = Library:Create("Frame", {
                         Parent = PickerFrame, BackgroundColor3 = Color3.fromRGB(46, 46, 55),
-                        Position = UDim2.new(0, 10, 0, 145), Size = UDim2.new(0, 35, 0, 15),
+                        Position = UDim2.new(0, 10, 0, 163), Size = UDim2.new(0, 35, 0, 15),
                         BorderSizePixel = 0, ZIndex = 151
                     })
                     Library:Create("UIStroke", { Parent = ModeBtnBg, Color = Color3.fromRGB(12, 12, 12), Thickness = 1, ApplyStrokeMode = Enum.ApplyStrokeMode.Border })
@@ -2405,7 +2559,7 @@ function Library:CreateWindow(options)
 
                     local ValBg = Library:Create("Frame", {
                         Parent = PickerFrame, BackgroundColor3 = Color3.fromRGB(46, 46, 55),
-                        Position = UDim2.new(0, 50, 0, 145), Size = UDim2.new(0, 125, 0, 15),
+                        Position = UDim2.new(0, 50, 0, 163), Size = UDim2.new(0, 125, 0, 15),
                         BorderSizePixel = 0, ZIndex = 151
                     })
                     Library:Create("UIStroke", { Parent = ValBg, Color = Color3.fromRGB(12, 12, 12), Thickness = 1, ApplyStrokeMode = Enum.ApplyStrokeMode.Border })
@@ -3046,6 +3200,10 @@ function Library:CreateWindow(options)
                     LabelObj.Set = LabelObj.SetValue
 
                     function LabelObj:AddColorpicker(cpOptions)
+                        cpOptions = cpOptions or {}
+                        if not cpOptions.Title and not cpOptions.Tittle then
+                            cpOptions.Tittle = text
+                        end
                         local cp = CreateColorpickerAddon(LabelContainer, ScrollFrame, cpOptions, self.AddonOffset)
                         self.AddonOffset = self.AddonOffset + 18 + 4
                         return self
@@ -3245,6 +3403,10 @@ function Library:CreateWindow(options)
                     end
 
                     function ToggleObj:AddColorpicker(cpOptions)
+                        cpOptions = cpOptions or {}
+                        if not cpOptions.Title and not cpOptions.Tittle then
+                            cpOptions.Tittle = text
+                        end
                         local cp = CreateColorpickerAddon(ToggleContainer, ScrollFrame, cpOptions, self.AddonOffset)
                         self.AddonOffset = self.AddonOffset + 18 + 4
                         return self
@@ -4113,12 +4275,22 @@ function Library:CreateWindow(options)
                         ApplyStrokeMode = Enum.ApplyStrokeMode.Border
                     })
 
-                    local InputBox = Library:Create("TextBox", {
-                        Name = "Input",
+                    local InputClip = Library:Create("Frame", {
+                        Name = "InputClip",
                         Parent = TextboxBg,
                         BackgroundTransparency = 1,
+                        ClipsDescendants = true,
                         Size = UDim2.new(1, -12, 1, 0),
                         Position = UDim2.new(0, 6, 0, 0),
+                        ZIndex = 8
+                    })
+
+                    local InputBox = Library:Create("TextBox", {
+                        Name = "Input",
+                        Parent = InputClip,
+                        BackgroundTransparency = 1,
+                        Size = UDim2.new(1, 0, 1, 0),
+                        Position = UDim2.new(0, 0, 0, 0),
                         Font = Enum.Font.Code,
                         Text = tostring(default),
                         TextColor3 = Color3.fromRGB(200, 200, 200),
@@ -4128,11 +4300,44 @@ function Library:CreateWindow(options)
                         ZIndex = 8
                     })
 
+                    local function getCursorIndex()
+                        local cursorPos = InputBox.CursorPosition
+                        if cursorPos == nil or cursorPos < 0 then
+                            return #InputBox.Text
+                        end
+                        return math.clamp(cursorPos - 1, 0, #InputBox.Text)
+                    end
+
+                    local function updateTextboxScroll()
+                        local currentText = tostring(InputBox.Text or "")
+                        local clipWidth = math.max(InputClip.AbsoluteSize.X, 1)
+                        local totalWidth = TextService:GetTextSize(currentText, 11, Enum.Font.Code, Vector2.new(10000, 20)).X
+                        local contentWidth = math.max(clipWidth, totalWidth + 4)
+                        InputBox.Size = UDim2.new(0, contentWidth, 1, 0)
+
+                        local beforeCursor = currentText:sub(1, getCursorIndex())
+                        local cursorWidth = TextService:GetTextSize(beforeCursor, 11, Enum.Font.Code, Vector2.new(10000, 20)).X
+                        local maxOffset = math.max(0, contentWidth - clipWidth)
+                        local targetOffset = 0
+
+                        if contentWidth > clipWidth then
+                            targetOffset = math.clamp(cursorWidth - clipWidth + 10, 0, maxOffset)
+                        end
+
+                        InputBox.Position = UDim2.new(0, -targetOffset, 0, 0)
+                    end
+
+                    InputBox:GetPropertyChangedSignal("Text"):Connect(updateTextboxScroll)
+                    InputBox:GetPropertyChangedSignal("CursorPosition"):Connect(updateTextboxScroll)
+                    InputClip:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateTextboxScroll)
+                    InputBox.Focused:Connect(updateTextboxScroll)
+
                     InputBox.FocusLost:Connect(function()
                         TextboxObj.Value = InputBox.Text
                         Library.Flags[flag] = TextboxObj
                         callback(InputBox.Text)
                         FireCallbacks(InputBox.Text)
+                        updateTextboxScroll()
                     end)
 
                     function TextboxObj:SetValue(value)
@@ -4144,9 +4349,11 @@ function Library:CreateWindow(options)
                         Library.Flags[flag] = TextboxObj
                         callback(tostring(value))
                         FireCallbacks(tostring(value))
+                        updateTextboxScroll()
                     end
                     TextboxObj.Set = TextboxObj.SetValue
 
+                    updateTextboxScroll()
                     Library.Flags[flag] = TextboxObj
                     return TextboxObj
                 end
@@ -4647,6 +4854,17 @@ function Library:CreateWindow(options)
             Flag = "ConfigList"
         })
 
+        SettingsSector:AddLabel({ Text = "Menu Bind" }):AddKeybind({
+            Default = "Insert",
+            Mode = "Toggle",
+            CanChangeMode = false,
+            ShowInList = false,
+            Flag = "MenuBind",
+            Callback = function(state)
+                Library:SetMenuVisible(state)
+            end
+        })
+
         local defaultAccent = Library.DefaultAccent or Library.Accent
         SettingsSector:AddToggle({
             Text = "Custom Accent Color",
@@ -4681,16 +4899,22 @@ function Library:CreateWindow(options)
         })
         Library:SetKeybindListVisible(true)
 
-        SettingsSector:AddLabel({ Text = "Menu Bind" }):AddKeybind({
-            Default = "Insert",
-            Mode = "Toggle",
-            CanChangeMode = false,
-            ShowInList = false,
-            Flag = "MenuBind",
-            Callback = function(state)
-                Library:SetMenuVisible(state)
+        SettingsSector:AddToggle({
+            Text = "Watermark",
+            Default = true,
+            Flag = "WatermarkToggle",
+            Callback = function(v)
+                Library:SetWatermarkVisible(v)
             end
         })
+        Library:SetWatermarkVisible(true)
+
+        SettingsSector:AddButton({
+            Text = "Unhook",
+            Callback = function()
+                Library:Unload()
+            end
+        }):Confirm({ Text = "This will completely unload the library. Are you sure?" })
 
         SettingsSector:AddTextbox({
             Text = "Config Name",
@@ -4751,13 +4975,6 @@ function Library:CreateWindow(options)
                 end
             end
         }):Confirm({ Text = "Delete this config?" })
-
-        SettingsSector:AddButton({
-            Text = "Unhook",
-            Callback = function()
-                Library:Unload()
-            end
-        }):Confirm({ Text = "This will completely unload the library. Are you sure?" })
 
         if configsList[1] then
             ConfigListObj:SetValue(configsList[1])
