@@ -2360,7 +2360,9 @@ function Library:CreateWindow(options)
                 local function CreateColorpickerAddon(parentContainer, scrollFrameObj, options, currentOffset)
                     options = typeof(options) == "table" and options or {}
                     local defaultColor = options.Default or Color3.fromRGB(255, 255, 255)
-                    local defaultAlpha = options.DefaultAlpha or 1
+                    local defaultAlpha = options.DefaultAlpha
+                    if defaultAlpha == nil then defaultAlpha = 0 end
+                    defaultAlpha = math.clamp(defaultAlpha, 0, 1)
                     local flag = options.Flag or ("Colorpicker_" .. tostring(math.random(100000)))
                     local callback = options.Callback or function() end
                     local pickerTitle = tostring(options.Title or options.Tittle or "Color Picker")
@@ -2368,6 +2370,8 @@ function Library:CreateWindow(options)
                     local cpObj = {
                         Color = defaultColor,
                         Alpha = defaultAlpha,
+                        Transparency = defaultAlpha,
+                        Opacity = 1 - defaultAlpha,
                         Callbacks = {}
                     }
                     
@@ -2382,7 +2386,7 @@ function Library:CreateWindow(options)
                     end
 
                     local h, s, v = defaultColor:ToHSV()
-                    local a = defaultAlpha
+                    local a = 1 - defaultAlpha
                     local colorMode = "HEX" 
 
                     local rightGap = 6
@@ -2422,7 +2426,7 @@ function Library:CreateWindow(options)
                         Parent = ColorBtnBg,
                         Size = UDim2.new(1, 0, 1, 0),
                         BackgroundColor3 = Color3.fromRGB(255, 255, 255),
-                        BackgroundTransparency = 1 - defaultAlpha,
+                        BackgroundTransparency = defaultAlpha,
                         AutoButtonColor = false,
                         Text = "",
                         BorderSizePixel = 0,
@@ -2605,14 +2609,16 @@ function Library:CreateWindow(options)
 
                     local function UpdateColor()
                         cpObj.Color = Color3.fromHSV(h, s, v)
-                        cpObj.Alpha = a
+                        cpObj.Alpha = 1 - a
+                        cpObj.Transparency = cpObj.Alpha
+                        cpObj.Opacity = a
                         Library.Flags[flag] = cpObj
                         
                         ColorBtnGradient.Color = ColorSequence.new({
                             ColorSequenceKeypoint.new(0, cpObj.Color),
                             ColorSequenceKeypoint.new(1, Library:GetDarkerColor(cpObj.Color, 0.3))
                         })
-                        ColorBtnDisplay.BackgroundTransparency = 1 - a
+                        ColorBtnDisplay.BackgroundTransparency = cpObj.Alpha
                         
                         SVMap.BackgroundColor3 = Color3.fromHSV(h, 1, 1)
                         AlphaColorOverlay.BackgroundColor3 = cpObj.Color
@@ -2840,12 +2846,17 @@ function Library:CreateWindow(options)
                             if newValues.Color ~= nil then cpObj.Color = newValues.Color end
                             if newValues.value ~= nil then cpObj.Color = newValues.value end
                             if newValues.Alpha ~= nil then cpObj.Alpha = newValues.Alpha end
+                            if newValues.Transparency ~= nil then cpObj.Alpha = newValues.Transparency end
+                            if newValues.Opacity ~= nil then cpObj.Alpha = 1 - newValues.Opacity end
                         elseif typeof(newValues) == "Color3" then
                             cpObj.Color = newValues
                         end
-                        
+
+                        cpObj.Alpha = math.clamp(cpObj.Alpha or 0, 0, 1)
+                        cpObj.Transparency = cpObj.Alpha
+                        cpObj.Opacity = 1 - cpObj.Alpha
                         h, s, v = cpObj.Color:ToHSV()
-                        a = cpObj.Alpha
+                        a = cpObj.Opacity
                         UpdateColor()
                     end
                     cpObj.Set = cpObj.SetValue
